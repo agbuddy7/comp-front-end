@@ -22,7 +22,8 @@ Github copilot
 - **⚡ Strike Animation**: Dynamic text or content reveal animation by clicking on floating images.
 - **🃏 Feature Cards**: Responsive and interactive cards displaying key Games category.
 - **💬 Pop-ups / Modals**: Clean and responsive pop-ups for home page and user interaction.
-
+- **💳 Cards**: card with multiple selctions for different category of games on the explore page
+- **💡 Light dark mode toogle**
 ---
 
 ## 🛠️ Tech Stack
