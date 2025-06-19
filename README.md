@@ -2,22 +2,26 @@
 
 # Frontend Showcase Website 🎨
 
-This is a modern and interactive frontend website built as part of a frontend development competition. It demonstrates creative UI/UX design and includes multiple interactive and aesthetic features to enhance user experience.
-
+This is a modern and interactive frontend website built as part of a frontend development competition.
+The theme of the website is a game distribution website 
 ## 🚀 Live Preview
 https://comp-front-end.vercel.app/
 
 ---
+## No frameworks or libraries were used to keep the project lightweight and hand-crafted.
+
+## AI used
+Github copilot
 
 ## ✅ Core Features
 
-- **💡 Loading Screen**: Stylish loading animation to improve user experience during initial page load.
-- **🌈 Carousel**: Smooth image or content slider using pure CSS or JavaScript.
-- **🌌 Parallax Scrolling**: Engaging scroll-based animations for depth and motion.
-- **🧑‍💼 Customer Page**: Dedicated section for user testimonials or client information.
-- **⚡ Strike Animation**: Dynamic text or content reveal animation using strike-through effects.
-- **🃏 Feature Cards**: Responsive and interactive cards displaying key features/services.
-- **💬 Pop-ups / Modals**: Clean and responsive pop-ups for notifications, contact forms, or info boxes.
+- **💡 Loading Screen**:  loading animation as mentioned.
+- **🌈 Carousel**: Smooth image or content slider using pure CSS or JavaScript on the explore page when selecting games.
+- **🌌 Parallax Scrolling**: Engaging scroll-based animations for depth and motion on explore page.
+- **🧑‍💼 Customer Section**: Dedicated section for our client information.
+- **⚡ Strike Animation**: Dynamic text or content reveal animation by clicking on floating images.
+- **🃏 Feature Cards**: Responsive and interactive cards displaying key Games category.
+- **💬 Pop-ups / Modals**: Clean and responsive pop-ups for home page and user interaction.
 
 ---
 
@@ -27,12 +31,13 @@ https://comp-front-end.vercel.app/
 - **CSS3**
 - **JavaScript (Vanilla)**
 
-No frameworks or libraries were used to keep the project lightweight and hand-crafted.
 
-File structure 
+File structure (scripts and style are inside html only)
 
 index.html
 explore page.html
+
+images
 
 
 
