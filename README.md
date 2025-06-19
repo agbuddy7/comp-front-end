@@ -40,6 +40,14 @@ explore page.html
 
 images
 
+# For running in local
+- **save all the files and images in a file
+- ** Run index.html
+it will work well
+
+
+
+
 
 
 ---
