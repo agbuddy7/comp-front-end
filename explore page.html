@@ -7,6 +7,8 @@
   <style>
 
 .preview-box {
+  position: relative;
+  overflow: hidden;
   width: 300px;
   height: 200px;
   background-color: var(--card-bg);
@@ -506,16 +508,17 @@
   const preview = document.getElementById('preview-img');
 
   const gameImages = {
-    "Call of Duty": "cod.jpg",
-    "Fortnite": "fortnite.jpg",
-    "Apex Legends": "apex.jpg",
-    "Tetris": "tetris.jpg",
-    "Candy Crush": "candy.jpg",
-    "Monument Valley": "monument.jpg",
-    "FIFA 24": "fifa.jpg",
-    "NBA 2K": "nba.jpg",
-    "Rocket League": "rocket.jpg"
-  };
+  "Call of Duty": { normal: "cod.jpg", hover: "cod_clean.jpg" },
+  "Fortnite": { normal: "fortnite.jpg", hover: "fortnite_clean.jpg" },
+  "Apex Legends": { normal: "apex.jpg", hover: "apex_clean.jpg" },
+  "Tetris": { normal: "tetris.jpg", hover: "tetris_clean.jpg" },
+  "Candy Crush": { normal: "candy.jpg", hover: "candy_clean.jpg" },
+  "Monument Valley": { normal: "monument.jpg", hover: "monument_clean.jpg" },
+  "FIFA 24": { normal: "fifa.jpg", hover: "fifa_clean.jpg" },
+  "NBA 2K": { normal: "nba.jpg", hover: "nba_clean.jpg" },
+  "Rocket League": { normal: "rocket.jpg", hover: "rocket_clean.jpg" }
+};
+
 
 const categoryToPreviewBox = {
   "action": document.getElementById("preview-action"),
@@ -527,14 +530,43 @@ const categoryToPreviewBox = {
 function updatePreview(category, game) {
   const imgBox = categoryToPreviewBox[category];
   if (!imgBox) return;
+  imgBox.innerHTML = ""; // Clear previous
 
-  imgBox.innerHTML = "";
+  const normalImg = document.createElement("img");
+  normalImg.src = gameImages[game].normal;
+  normalImg.alt = game;
+  normalImg.style.position = "absolute";
+  normalImg.style.transition = "opacity 0.4s ease";
+  normalImg.style.width = "100%";
+  normalImg.style.height = "100%";
+  normalImg.style.objectFit = "cover";
+  normalImg.style.opacity = "1";
 
-  const img = document.createElement("img");
-  img.src = gameImages[game];
-  img.alt = game;
-  imgBox.appendChild(img);
+  const hoverImg = document.createElement("img");
+  hoverImg.src = gameImages[game].hover;
+  hoverImg.alt = game + " clean";
+  hoverImg.style.position = "absolute";
+  hoverImg.style.transition = "opacity 0.4s ease";
+  hoverImg.style.width = "100%";
+  hoverImg.style.height = "100%";
+  hoverImg.style.objectFit = "cover";
+  hoverImg.style.opacity = "0";
+
+  imgBox.style.position = "relative"; // Ensure stacking
+  imgBox.appendChild(normalImg);
+  imgBox.appendChild(hoverImg);
+
+  imgBox.addEventListener("mouseenter", () => {
+    normalImg.style.opacity = "0";
+    hoverImg.style.opacity = "1";
+  });
+  imgBox.addEventListener("mouseleave", () => {
+    normalImg.style.opacity = "1";
+    hoverImg.style.opacity = "0";
+  });
 }
+
+
 
 // Attach change listener
 document.querySelectorAll('input[type="radio"]').forEach(input => {
