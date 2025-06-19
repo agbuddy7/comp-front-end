@@ -220,22 +220,56 @@
             z-index: 1;
             pointer-events: none;
         }
-        .bg-img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300px;
-            height: 200px;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-            filter: blur(8px) brightness(0.9);
-            opacity: 0.7;
-            transition: 
-                filter 0.4s, 
-                opacity 0.4s, 
-                z-index 0.2s,
-                transform 0.4s;
-        }
+        /* Update your .bg-img and .bg-img.active styles */
+/* filepath: c:\Users\Sweety gupta\Desktop\New folder (2)\index.html.html */
+.bg-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160px;      /* smaller background images */
+    height: 100px;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    filter: blur(8px) brightness(0.9);
+    opacity: 0.7;
+     animation: floatY 5s ease-in-out infinite;
+    transition: 
+        filter 0.4s, 
+        opacity 0.4s, 
+        z-index 0.2s,
+        transform 0.4s,
+        width 0.4s,
+        height 0.4s;
+}
+.bg-img.active {
+    filter: blur(0) brightness(1);
+    opacity: 1;
+    z-index: 2;
+    transform: translate(-50%, -50%) scale(1.15);
+    width: 300px;      /* larger on hover */
+    height: 200px;
+    box-shadow: 0 8px 32px rgba(106,27,154,0.18);
+}
+@media (max-width: 900px) {
+    .bg-img {
+        width: 90px;
+        height: 55px;
+    }
+    .bg-img.active {
+        width: 180px;
+        height: 110px;
+    }
+}
+@media (max-width: 600px) {
+    .bg-img {
+        width: 60px;
+        height: 35px;
+    }
+    .bg-img.active {
+        width: 120px;
+        height: 70px;
+    }
+}
         .bg-img.img1 { top: 20%; left: 20%; }
         .bg-img.img2 { top: 20%; left: 85%; }
         .bg-img.img3 { top: 70%; left: 20%; }
@@ -248,6 +282,26 @@
             transform: translate(-50%, -50%) scale(1.15);
             box-shadow: 0 8px 32px rgba(106,27,154,0.18);
         }
+        @keyframes floatY {
+    0%   { transform: translate(-50%, -50%) translateY(0); }
+    50%  { transform: translate(-50%, -50%) translateY(-20px); }
+    100% { transform: translate(-50%, -50%) translateY(0); }
+}
+@keyframes floatX {
+    0%   { transform: translate(-50%, -50%) translateX(0); }
+    50%  { transform: translate(-50%, -50%) translateX(20px); }
+    100% { transform: translate(-50%, -50%) translateX(0); }
+}
+.bg-img.img2,
+.bg-img.img4 {
+    animation: floatX 6s ease-in-out infinite;
+}
+.bg-img.img3 {
+    animation: floatY 7s ease-in-out infinite;
+}
+.bg-img.img5 {
+    animation: floatX 8s ease-in-out infinite;
+}
         .hero-content {
             position: relative;
             z-index: 3;
@@ -362,6 +416,12 @@
             gap: 1.2rem;
             position: relative;
         }
+        .background-images {
+    pointer-events: none; /* container ignores pointer events */
+}
+.bg-img {
+    pointer-events: auto; /* images can be clicked */
+}
         .gallery-images img {
             width: 150px;
             height: 100px;
@@ -587,6 +647,23 @@
 
             showImages(current);
         });
+document.querySelectorAll('.bg-img').forEach(img => {
+    img.addEventListener('mousedown', function(e) {
+        // Add a strong shake and flash effect
+        img.style.transition = 'transform 0.08s cubic-bezier(.5,2,.5,1), filter 0.08s';
+        img.style.transform += ' scale(1.25) rotate(' + (Math.random() > 0.5 ? 12 : -12) + 'deg)';
+        img.style.filter = 'brightness(2) blur(0px) drop-shadow(0 0 24px #fff)';
+        setTimeout(() => {
+            img.style.transition = 'transform 0.18s cubic-bezier(.5,2,.5,1), filter 0.18s';
+            img.style.transform = img.classList.contains('active')
+                ? 'translate(-50%, -50%) scale(1.15)'
+                : 'translate(-50%, -50%)';
+            img.style.filter = img.classList.contains('active')
+                ? 'brightness(1)'
+                : 'brightness(0.9) blur(8px)';
+        }, 120);
+    });
+});
     </script>
 </body>
 </html>
